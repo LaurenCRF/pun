@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: white; /* Light background */
+      }
+      .centered {
+        text-align: center;
+        margin-top: 20px;
+      }
+      #regions_div {
+        width: 100%;
+        max-width: 900px; /* Maximum width */
+        height: auto; /* Maintain aspect ratio */
+        margin: auto; /* Center the div */
+      }
+      h2 {
+        color: #000000; /* Black color for the title */
+      }
+      button {
+        background-color: #5271FF;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+      }
+      .legend {
+        font-size: 16px;
+      }
+      
+      }
+      @media screen and (max-width: 900px) {
+        #regions_div {
+          height: 500px; /* Fixed height for smaller screens */
+        }
+      }
+    </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {
+        'packages':['geochart'],
+        // 'mapsApiKey': 'YOUR_API_KEY' // Uncomment and replace with your API key if needed
+      });
+      google.charts.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+        var data = google.visualization.arrayToDataTable([
+['State', 'Value'],
+['South Dakota', 100],
+['Wyoming', 95],
+['Utah', 92],
+['Kansas', 77],
+['West Virginia', 75],
+['Alaska', 75],
+['Kentucky', 70],
+['Indiana', 67],
+['Idaho', 64],
+['Oklahoma', 61],
+['Iowa', 61],
+['New Hampshire', 61],
+['Maine', 60],
+['Arkansas', 59],
+['Missouri', 57],
+['Wisconsin', 53],
+['Ohio', 51],
+['Michigan', 51],
+['Pennsylvania', 50],
+['Nebraska', 50],
+['Louisiana', 49],
+['Delaware', 45],
+['Hawaii', 45],
+['Washington', 45],
+['South Carolina', 44],
+['North Dakota', 64],
+['North Carolina', 43],
+['Tennessee', 43],
+['Colorado', 43],
+['Minnesota', 42],
+['Oregon', 42],
+['Mississippi', 41],
+['Texas', 41],
+['Arizona', 41],
+['Illinois', 41],
+['Montana', 82],
+['Nevada', 39],
+['Virginia', 37],
+['Georgia', 37],
+['Alabama', 34],
+['New Mexico', 34],
+['Maryland', 34],
+['Florida', 32],
+['Connecticut', 29],
+['Vermont', 27],
+['Massachusetts', 26],
+['California', 26],
+['New Jersey', 25],
+['Rhode Island', 23],
+['New York', 20],
+['District of Columbia', 12]        
+]);
+
+        var options = {
+          region: 'US',
+          resolution: 'provinces',
+          colorAxis: {colors: ['#fff7cc', '#9a0000']}, // From light yellow to Coca-Cola red
+          backgroundColor: 'white',
+          datalessRegionColor: '#cccccc' // Neutral color for regions without data
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+        chart.draw(data, options);
+      }
+
+      function embedMap() {
+        var embedCode = '<iframe src="' + window.location.href + '" width="900" height="620"></iframe>';
+        prompt("Copy and paste this HTML to embed the map:", embedCode);
+      }
+
+      window.onresize = function(){
+        drawRegionsMap();
+      };
+    </script>
+  </head>
+  <body>
+    <div class="centered">
+      <h2>Which US States Like Christmas Jokes The Most?</h2>
+    </div>
+    <div id="regions_div"></div>
+    <div class="centered legend">
+      <span class="color-box"></span> Red color indicates higher popularity
+    </div>
+    <div class="centered">
+      <button onclick="embedMap()">Embed This Map</button>
+    </div>
+  </body>
+</html>
