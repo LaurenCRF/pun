@@ -8,7 +8,7 @@
       }
       .centered {
         text-align: center;
-        margin-top: 20px;
+        margin-top: 10px;
       }
       #regions_div {
         width: 100%;
@@ -120,9 +120,14 @@
       }
 
       function embedMap() {
-        var embedCode = '<iframe src="' + window.location.href + '" width="900" height="620"></iframe>';
-        prompt("Copy and paste this HTML to embed the map:", embedCode);
-      }
+  var embedCode = `
+<div style="position: relative; width: 100%; padding-top: 68.89%; /* 620/900 * 100 */">
+  <iframe src="${window.location.href}" 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+          allowfullscreen></iframe>
+</div>`;
+  prompt("Copy and paste this HTML to embed the map:", embedCode);
+}
 
       window.onresize = function(){
         drawRegionsMap();
