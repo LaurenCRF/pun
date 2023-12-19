@@ -14,10 +14,7 @@
         width: 100%;
         max-width: 900px; /* Maximum width */
         height: auto; /* Maintain aspect ratio */
-        margin: auto; /* Center the div */
-      }
-      h2 {
-        color: #000000; /* Black color for the title */
+        margin: 20px auto; /* Margin to center the div */
       }
       button {
         background-color: #5271FF;
@@ -34,9 +31,13 @@
       }
       .legend {
         font-size: 16px;
+        font-style: italic; /* Make text italic */
+      }
+      .credit {
+        font-size: 14px;
+        margin-top: 5px; /* 5px spacing */
       }
       
-      }
       @media screen and (max-width: 900px) {
         #regions_div {
           height: 500px; /* Fixed height for smaller screens */
@@ -45,7 +46,7 @@
     </style>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {
+google.charts.load('current', {
         'packages':['geochart'],
         // 'mapsApiKey': 'YOUR_API_KEY' // Uncomment and replace with your API key if needed
       });
@@ -130,12 +131,12 @@
     </script>
   </head>
   <body>
-    <div class="centered">
-      <h2>Which US States Like Christmas Jokes The Most?</h2>
-    </div>
     <div id="regions_div"></div>
     <div class="centered legend">
       <span class="color-box"></span> Red color indicates higher popularity
+    </div>
+    <div class="centered credit">
+      Credit: <a href="https://punsteria.com/" target="_blank">Punsteria</a>
     </div>
     <div class="centered">
       <button onclick="embedMap()">Embed This Map</button>
